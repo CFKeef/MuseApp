@@ -5,11 +5,16 @@ import HeaderNav from '../../components/molecules/headernav';
 import Events from '../../components/molecules/events';
 import LocalTray from '../../components/molecules/localtray';
 import PlayArea from '../../components/molecules/playarea';
+import GenericButton from '../../components/atoms/genericbutton';
 
-const Dashboard = () => {
+const Dashboard = ({navigation}) => {
     const [target, setTarget] = useState("");
     const [active, setActive] = useState(false);
     const [selected, setSelected] = useState("");
+    const [polo, setPolo] = useState(false);
+    const openPolo = () => {
+        console.log("TEST");
+    };
 
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: "#0B0518", height: "100%"}}>
@@ -18,6 +23,7 @@ const Dashboard = () => {
                     text={"Hi Patryck!"} 
                     target={target} 
                     setTarget={setTarget} 
+                    navigation={navigation}
                 />
                 <Events
                     selected={selected}

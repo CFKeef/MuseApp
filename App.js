@@ -10,6 +10,7 @@ import store from "./store";
 // Components
 import Login from './screens/login';
 import Dashboard from './screens/dashboard';
+import Settings from './screens/settings';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ export default function App() {
         >
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
+        <Stack.Screen name="Settings" component={Settings} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

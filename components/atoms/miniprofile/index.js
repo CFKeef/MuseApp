@@ -14,13 +14,13 @@ const MiniProfile = (props) => {
         if(expanded) 
             return (
                 <View style={styles.dropdown}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => props.navigation.navigate("Profile")}>
                         <Text style={styles.dropdowntext}>Profile</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => props.navigation.navigate("Settings")}>
                         <Text style={styles.dropdowntext}>Settings</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => props.navigation.navigate("Login")}>
                         <Text style={styles.dropdowntext}>Log out</Text>
                     </TouchableOpacity>
                 </View>

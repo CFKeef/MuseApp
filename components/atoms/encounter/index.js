@@ -2,6 +2,20 @@ import React,{ useState } from 'react';
 import {TouchableOpacity, Text, Image, StyleSheet, View} from 'react-native';
 
 const Encounter = (props) => {
+    const handleBorderStyling = () => {
+        switch(true) {
+            case props.encounter.match <= 25:
+                return {borderColor: "#E33B4E"}
+            case props.encounter.match <= 50:
+                return {borderColor: "#cedb3d"}
+            case props.encounter.match <= 75:
+                return {borderColor: "#4A3DDB"}
+            case props.encounter.match <= 100:
+                return {borderColor: "#35927C"}
+            default:
+                return {borderColor: "#4A3DDB"}
+        }
+    };
     return (
         <TouchableOpacity onPress={() => {}}
             style={styles.photoContainer}
@@ -10,7 +24,7 @@ const Encounter = (props) => {
                 source={{
                     uri: props.encounter.pfp
                 }}
-                style={styles.image}
+                style={[styles.image, handleBorderStyling()]}
             />
         </TouchableOpacity>
     )
@@ -29,7 +43,6 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
         borderRadius: 100,
-        borderColor: "#4a3ddb",
         borderWidth: 4,
     },
 });

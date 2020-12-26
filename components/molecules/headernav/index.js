@@ -8,7 +8,7 @@ const HeaderNav = (props) => {
     return (
         <View style={styles.mainContainer}> 
                 <SectionHeader text={props.text} />
-                <MiniProfile />
+                <MiniProfile navigation={props.navigation} />
         </View>
     )
 };
