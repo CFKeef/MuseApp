@@ -10,7 +10,7 @@ const Event = (props) => {
             )).toUpperCase();
     };
     return (
-        <TouchableOpacity onPress={() => {}}
+        <View
             style={styles.eventContainer}
         >   
             <Text style={styles.dateText}>{handleDateString()}</Text>
@@ -21,7 +21,7 @@ const Event = (props) => {
                     <Text style={styles.buttonText}>Learn More</Text>
                 </TouchableOpacity>
             </View>
-        </TouchableOpacity>
+        </View>
     )
 };
 
@@ -31,10 +31,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         height: 200,
         width: 200,
-        paddingTop: 20,
-        paddingBottom: 20,
-        paddingLeft: 20,
-        paddingRight: 20,
+        padding: 20,
         marginRight: 20,
         marginLeft: 20,
         alignItems: "center"

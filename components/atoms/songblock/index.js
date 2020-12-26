@@ -1,6 +1,7 @@
-import React,{ useState } from 'react';
+import React,{ useState, useEffect } from 'react';
 import {TouchableOpacity, Text, Image, StyleSheet, View} from 'react-native';
-
+import {localip} from '../../../env';
+import axios from 'axios';
 import testArt from '../../../assets/images/keefpfp.png';
 import leftArr from '../../../assets/images/leftarr.png';
 import rightArr from '../../../assets/images/rightarr.png';
@@ -11,7 +12,27 @@ const SongBlock = (props) => {
     const [songTitle, setSongTitle] = useState("Happy Birthday");
     const [songAlbum, setSongAlbum] = useState("Classics");
     const [songArtist, setSongArtist] = useState("Someone");
+    const [songURI, setSongURI] = useState("");
+    const [index, setIndex] = useState(0);
     const [playing,setPlaying] = useState(false);
+
+    useEffect(() => {
+        const getSong = async () => {
+            axios.get(`${localip}/getSongs`)
+            .then(res =>{
+                const curr = res.data[index];
+                setSongTitle(curr.name);
+                setSongAlbum(curr.album);
+                setSongURI(curr.art)
+                setSongArtist("Tyler, The Creator");
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        };
+
+        getSong();
+    }, [index]);
 
     const handleImage = () => {
         if(!playing) return play;
@@ -22,7 +43,11 @@ const SongBlock = (props) => {
         <View style={styles.mainContainer}>
             <View style={styles.imgContainer}>
                 <Image
-                    source={testArt}
+                    source={
+                        {
+                            uri: songURI
+                        }
+                    }
                     style={styles.image}
                 />
             </View>
@@ -38,7 +63,7 @@ const SongBlock = (props) => {
                 </View>
             </View>
             <View style={styles.buttonContainer}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => {setIndex(index - 1)}}>
                     <Image
                         source={leftArr}
                         style={styles.arrow}
@@ -50,8 +75,8 @@ const SongBlock = (props) => {
                         style={styles.mainBtn}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity>
-                    <Image
+                <TouchableOpacity onPress={() => {setIndex(index + 1)}}>
+                    <Image 
                         source={rightArr}
                         style={styles.arrow}
                     />
@@ -70,7 +95,7 @@ const styles = StyleSheet.create({
         borderRadius: 40
     },
     text: {
-        color: "#BAA8FF",
+        color: "#FFFFFF",
         fontSize: 12,
         fontWeight: "600"
     },

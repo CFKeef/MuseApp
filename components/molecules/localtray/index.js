@@ -2,23 +2,23 @@ import React, { useState, useEffect } from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
 import {localip} from '../../../env';
 import axios from 'axios';
-import Song from '../../atoms/song';
+import ArtistBubble from '../../atoms/artistbubble';
 
 const LocalTray = (props) => {
-    const [songs, setSongs] = useState([]);
+    const [artists, setArtists] = useState([]);
 
     useEffect(() => {
-        const getRecommendedEvents = async () => {
-            axios.get(`${localip}/getSongs`)
+        const getArtists = async () => {
+            axios.get(`${localip}/getArtists`)
             .then(res =>{
-                setEvents(res.data);
+                setArtists(res.data);
             })
             .catch(err => {
                 console.log(err);
             })
         };
 
-        getRecommendedEvents();
+        getArtists();
     }, []);
 
     return (
@@ -28,10 +28,10 @@ const LocalTray = (props) => {
             </View>
             <FlatList
                 style={{width: "100%", height: '100%'}}
-                horizontal={false}
-                data={songs}
-                renderItem={({item}) => <Song song={item} selected={props.selected} />}
-                keyExtractor={(song) => String(song.id)}
+                horizontal={true}
+                data={artists}
+                renderItem={({item,index}) => <ArtistBubble artist={item} index={index} selected={props.selected} />}
+                keyExtractor={(artist) => String(artist.id)}
                 initialScrollIndex={0}
                 removeClippedSubviews={false}
                 showsHorizontalScrollIndicator={false}
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         width:"100%",
         alignItems: "center", 
         justifyContent: "center",
-        height: 230,
+        height: 250,
         marginBottom: 20,
     },
     posContainer: {

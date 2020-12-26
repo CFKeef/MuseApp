@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
         marginTop: 10,
-        height: "100%"
+        height: "100%",
+        zIndex: 10
     },
     footerContainer: {
         width: "100%",

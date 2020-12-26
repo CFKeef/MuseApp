@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         height: 230,
         marginBottom: 20,
+        zIndex: 10
     },
     posContainer: {
         alignSelf: "stretch",

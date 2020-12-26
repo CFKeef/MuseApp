@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignSelf: "stretch",
         position: "absolute",
-        left: 340
+        left: 320,
     },
     photoContainer: {
         backgroundColor: "#150E39",
@@ -71,19 +71,19 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 5,
         borderBottomLeftRadius:5,
-        borderBottomRightRadius: 5
+        borderBottomRightRadius: 5,
     },
     dropdowntext: {
         paddingBottom: 10,
         color: "#BAA8FF",
         fontWeight: "600",
-        fontSize: 14
+        fontSize: 14,
     },
     dropDownbg: {
         backgroundColor: "#4A3DDB",
         padding: 5,
         borderTopLeftRadius: 5,
-        borderTopRightRadius: 5
+        borderTopRightRadius: 5,
     }
 });
 
