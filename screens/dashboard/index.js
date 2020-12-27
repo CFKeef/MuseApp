@@ -31,6 +31,9 @@ const Dashboard = () => {
                 navigation.navigate("EventDetail");
                 break;
             // Artist flag
+            case storePopups.artistFlag:
+                navigation.navigate("ArtistDetail");
+                break;
             // Encounter Flag
             // Song Flag
             // Marco Flag

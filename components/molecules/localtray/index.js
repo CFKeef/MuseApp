@@ -3,9 +3,20 @@ import {StyleSheet, Text, View, FlatList} from 'react-native';
 import {localip} from '../../../env';
 import axios from 'axios';
 import ArtistBubble from '../../atoms/artistbubble';
+import {useDispatch} from 'react-redux'
+
+// Redux
+import {setArtist} from '../../../actions/artists';
+import {setArtistPopup} from '../../../actions/popups';
 
 const LocalTray = (props) => {
     const [artists, setArtists] = useState([]);
+    const dispatch = useDispatch();
+
+    const onClickWrapper = (item) => {
+        dispatch(setArtist(item));
+        dispatch(setArtistPopup(true));
+    };
 
     useEffect(() => {
         const getArtists = async () => {
@@ -30,7 +41,7 @@ const LocalTray = (props) => {
                 style={{width: "100%", height: '100%'}}
                 horizontal={true}
                 data={artists}
-                renderItem={({item,index}) => <ArtistBubble artist={item} index={index} selected={props.selected} />}
+                renderItem={({item,index}) => <ArtistBubble artist={item} index={index} onClick={() => onClickWrapper(item)} />}
                 keyExtractor={(artist) => String(artist.id)}
                 initialScrollIndex={0}
                 removeClippedSubviews={false}

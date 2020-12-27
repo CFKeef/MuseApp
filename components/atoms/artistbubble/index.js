@@ -38,7 +38,7 @@ const ArtistBubble = (props) => {
                     {props.artist.listeners} Listeners
                 </Text>
             </View>
-            <TouchableOpacity onPress={() => {}} style={[styles.artistBtn, handleButtonStyling()]}>
+            <TouchableOpacity onPress={() => {props.onClick()}} style={[styles.artistBtn, handleButtonStyling()]}>
                 <Text style={[styles.btnText]}>View Artist</Text>
             </TouchableOpacity>
         </View>

@@ -13,6 +13,7 @@ import Dashboard from './screens/dashboard';
 import Profile from './screens/profile';
 import Options from './screens/options';
 import EventDetail from './screens/eventdetail';
+import ArtistDetail from './screens/artists';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,7 @@ const StackNav = () => {
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Options" component={Options} />
       <Stack.Screen name="EventDetail" component={EventDetail} />
+      <Stack.Screen name="ArtistDetail" component={ArtistDetail} />
     </Stack.Navigator>
   )
 }
