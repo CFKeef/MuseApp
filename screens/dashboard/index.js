@@ -1,36 +1,50 @@
 import React, {useState} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import { View, StyleSheet, Text, SafeAreaView, Image} from 'react-native';
 
 import HeaderNav from '../../components/molecules/headernav';
 import Events from '../../components/molecules/events';
 import LocalTray from '../../components/molecules/localtray';
 import PlayArea from '../../components/molecules/playarea';
-import GenericButton from '../../components/atoms/genericbutton';
+import { useNavigation } from '@react-navigation/native';
 
-const Dashboard = ({navigation}) => {
-    const [polo, setPolo] = useState(false);
-    const [settings, setSettings] = useState(false);
+// redux pulls
+const getArtist = state => state.artist;
+const getEvent = state => state.event;
+const getSettings = state => state.settings;
+const getPopups = state => state.popups;
+const getEncounter = state => state.artist;
 
-    const openPolo = () => {
-        console.log("TEST");
-    };
-
-    const navigate = (route) => {
-        navigation.navigate(route)
-    }
+const Dashboard = () => {
+    const storeArtist = useSelector(getArtist);
+    const storeEvent = useSelector(getEvent);
+    const storeSettings = useSelector(getSettings);
+    const storePopups = useSelector(getPopups);
+    const storeEncounter = useSelector(getEncounter);
+    const dispatch = useDispatch();
+    const navigation = useNavigation();
     
-    const handleSettingsPopUp = () => {
-        return (
-            <View style={styles.settings}>
-            
-            </View>
-        )
+    const handlePopUp = () => {
+        switch(true) {
+            // Event flag
+            case storePopups.eventFlag:
+                navigation.navigate("EventDetail");
+                break;
+            // Artist flag
+            // Encounter Flag
+            // Song Flag
+            // Marco Flag
+            default:
+                break;
+        };
     };
+
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: "#0B0518", height: "100%"}}>
+            {handlePopUp()}
             <View style={styles.mainContainer}>
                 <HeaderNav />
-                <Events/>
+                <Events />
                 <LocalTray />
                 <View style={styles.footerContainer}>
                     <PlayArea/>

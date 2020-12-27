@@ -1,8 +1,6 @@
 import React,{ useState } from 'react';
 import {TouchableOpacity, Text, Image, StyleSheet, View} from 'react-native';
 
-import GenericButton from '../../atoms/genericbutton';
-
 const Event = (props) => {
     const handleDateString = () => {
         return String(new Date(props.event.date).toLocaleDateString({},
@@ -17,7 +15,7 @@ const Event = (props) => {
             <Text style={styles.nameText}>{props.event.name}</Text>
             <Text style={styles.dateText}>{props.event.type}</Text>
             <View style={{marginBottom: 20}}>
-                <TouchableOpacity style={styles.buttonStyling} onPress={() => {}}>
+                <TouchableOpacity style={styles.buttonStyling} onPress={() => {props.onClick(props.event)}}>
                     <Text style={styles.buttonText}>Learn More</Text>
                 </TouchableOpacity>
             </View>

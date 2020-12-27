@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {useDispatch} from 'react-redux';
 import {localip} from '../../../env';
 import axios from 'axios';
 import Event from '../../atoms/event';
 
+// Redux
+import {setEvent} from '../../../actions/events';
+import {setEventPopup} from '../../../actions/popups';
+
 const Events = (props) => {
     const [events, setEvents] = useState([]);
+    const dispatch = useDispatch();
+
+    const onClickWrapper = (item) => {
+        dispatch(setEvent(item));
+        dispatch(setEventPopup(true));
+    };
 
     useEffect(() => {
         const getRecommendedEvents = async () => {
@@ -30,7 +41,7 @@ const Events = (props) => {
                 style={{width: "100%", height: '100%'}}
                 horizontal={true}
                 data={events}
-                renderItem={({item}) => <Event event={item} selected={props.selected} />}
+                renderItem={({item}) => <Event event={item} onClick={onClickWrapper} />}
                 keyExtractor={(event) => String(event.id)}
                 initialScrollIndex={0}
                 removeClippedSubviews={false}

@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { View, StyleSheet, Text, SafeAreaView, Image, Switch, TouchableOpacity} from 'react-native';
-import GenericButton from '../../components/atoms/genericbutton';
 
 // redux
 const getSettings = state => state.settings
@@ -47,12 +46,9 @@ const Options = () => {
                     </View>
                 </View>
 
-                <GenericButton
-                    message={"Back to Dashboard"}
-                    action={() => navigation.goBack()}
-                    textColor={"#0B0518"}
-                    color={"#fefe00"}
-                />
+                <TouchableOpacity style={styles.navButton} onPress={() => navigation.goBack()}>
+                    <Text style={styles.navButtonText}>Back to Dashboard</Text>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
     )
@@ -112,6 +108,21 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: "700",
         letterSpacing: 1
+    },
+    navButton: {
+        width: "80%",
+        height: 40,
+        backgroundColor: "#4A3DDB",
+        justifyContent:"center",
+        alignContent:"center",
+        borderRadius: 5
+    },
+    navButtonText: {
+        textAlign: "center", 
+        fontSize: 16,
+        fontWeight: "700",
+        letterSpacing: 1,
+        color: "#FFFFFF"
     }
 });
 

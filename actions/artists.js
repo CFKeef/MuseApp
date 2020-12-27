@@ -1,6 +1,6 @@
 export const setArtist = payload => {
     return {
-        type: "ARTISTS_SET_ARTIST",
+        type: "ARTISTS_SETARTIST",
         payload: payload
     }
 }
