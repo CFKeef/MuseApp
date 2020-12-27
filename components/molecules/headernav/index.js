@@ -30,9 +30,6 @@ const HeaderNav = (props) => {
 
     return (
         <View style={styles.mainContainer}> 
-            <TouchableOpacity style={styles.button} onPress={() => props.setPolo(!polo)}>
-                <Text style={styles.buttonText}>Marco</Text>
-            </TouchableOpacity>
             <View style={[styles.profileContainer, handleDropdownStyling()]}>
                 {handleDropdown()}
                 <TouchableOpacity onPress={() => {setExpanded(!expanded)}}
@@ -51,7 +48,7 @@ const HeaderNav = (props) => {
 const styles = StyleSheet.create({
     mainContainer: {
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "flex-end",
         alignSelf: "stretch",
         alignContent: "center",
         alignItems: "center",
@@ -101,7 +98,7 @@ const styles = StyleSheet.create({
         color: "#FFFFFF",
         fontWeight: "600",
         fontSize: 14,
-        marginRight: 5
+        marginRight: 20
     },
     dropDownbg: {
         backgroundColor: "#3d31bf",
