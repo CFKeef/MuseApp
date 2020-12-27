@@ -6,6 +6,9 @@ const EventSnippet = (props) => {
     const handleBackgroundStyling = () => {
         return props.index % 2 === 0 ? {backgroundColor: "#35927C"} : {backgroundColor: "#E33B4E"}
     };
+    const handleButtonStyling = () => {
+        return props.index % 2 === 0 ? {backgroundColor: "#43b79c"} : {backgroundColor: "#ce1d31"}
+    }
 
     return (
         <View style={[styles.mainContainer, handleBackgroundStyling()]}>
@@ -19,7 +22,7 @@ const EventSnippet = (props) => {
                     <Text style={styles.album}>{props.event.album}</Text>
                 </View>
             </View>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={[styles.button,handleButtonStyling()]}>
                 <Text style={styles.btntext}>View Event</Text>
             </TouchableOpacity>
         </View>
@@ -65,17 +68,17 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: "#FFFFFF",
-        height: 30,
+        height: 40,
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: 20,
+        borderRadius: 5,
         marginRight: 10
     },
     btntext: {
-        color: "#000000",
+        color: "#FFFFFF",
         fontSize: 12,
         fontWeight: "500",
-        padding: 10,
+        padding: 5,
         
     }
 });
