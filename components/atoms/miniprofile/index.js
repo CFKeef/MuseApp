@@ -9,19 +9,20 @@ const MiniProfile = (props) => {
     const handleDropdownStyling = () => {
         if(expanded) return styles.dropDownbg
     };
+    
 
     const handleDropdown = () => {
         if(expanded) 
             return (
                 <View style={styles.dropdown}>
-                    <TouchableOpacity onPress={() => props.navigation.navigate("Profile")}>
-                        <Text style={styles.dropdowntext}>Profile</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => props.navigation.navigate("Settings")}>
+                    <TouchableOpacity onPress={() => props.navigateToSettings()}>
                         <Text style={styles.dropdowntext}>Settings</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => props.navigation.navigate("Login")}>
-                        <Text style={styles.dropdowntext}>Log out</Text>
+                    <TouchableOpacity onPress={() => props.navigate("Profile")}>
+                        <Text style={styles.dropdowntext}>Profile</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => props.navigate("Login")}>
+                        <Text style={styles.dropdowntext}>Log Out</Text>
                     </TouchableOpacity>
                 </View>
             );
@@ -29,6 +30,7 @@ const MiniProfile = (props) => {
 
     return (
         <View style={[styles.mainContainer, handleDropdownStyling()]}>
+            {handleDropdown()}
             <TouchableOpacity onPress={() => {setExpanded(!expanded)}}
                 style={[styles.photoContainer, ]}
             >   
@@ -37,7 +39,6 @@ const MiniProfile = (props) => {
                     style={styles.image}
                 />
             </TouchableOpacity>
-            {handleDropdown()}
         </View>
     )
 };
@@ -47,8 +48,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignSelf: "stretch",
-        position: "absolute",
-        left: 320,
+        alignItems: 'center',
+        marginRight: 20
     },
     photoContainer: {
         backgroundColor: "#150E39",
@@ -62,28 +63,21 @@ const styles = StyleSheet.create({
         borderRadius: 100
     },
     dropdown: {
-        right: 0,
-        top: 60,
-        backgroundColor: "#4A3DDB",
-        position: "absolute",
-        paddingRight: 5.6,
-        paddingLeft: 5.6,
-        paddingTop: 10,
-        paddingBottom: 5,
-        borderBottomLeftRadius:5,
-        borderBottomRightRadius: 5,
+        backgroundColor: "#3d31bf",
+        flexDirection: "row",
+        paddingLeft: 10,
+        borderTopLeftRadius: 5,
+        borderBottomLeftRadius: 5
     },
     dropdowntext: {
-        paddingBottom: 10,
-        color: "#BAA8FF",
+        color: "#FFFFFF",
         fontWeight: "600",
         fontSize: 14,
+        marginRight: 5
     },
     dropDownbg: {
-        backgroundColor: "#4A3DDB",
-        padding: 5,
-        borderTopLeftRadius: 5,
-        borderTopRightRadius: 5,
+        backgroundColor: "#3d31bf",
+        borderRadius: 5
     }
 });
 

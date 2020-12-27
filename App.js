@@ -10,34 +10,33 @@ import store from "./store";
 // Components
 import Login from './screens/login';
 import Dashboard from './screens/dashboard';
-import Settings from './screens/settings';
+import Profile from './screens/profile';
+import Options from './screens/options';
 
 const Stack = createStackNavigator();
+
+const StackNav = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false
+      }}
+      initialRouteName="Dashboard"
+    >
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Dashboard" component={Dashboard} />
+      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Options" component={Options} />
+    </Stack.Navigator>
+  )
+}
 
 export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false
-          }}
-          initialRouteName="Dashboard"
-        >
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Dashboard" component={Dashboard} />
-        <Stack.Screen name="Settings" component={Settings} />
-        </Stack.Navigator>
+        {StackNav()}
       </NavigationContainer>
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
