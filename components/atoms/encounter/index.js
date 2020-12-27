@@ -1,7 +1,11 @@
 import React,{ useState } from 'react';
 import {TouchableOpacity, Text, Image, StyleSheet, View} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
+import {setEncounterPopup} from '../../../actions/popups';
 
 const Encounter = (props) => {
+    const dispatch = useDispatch();
+
     const handleBorderStyling = () => {
         switch(true) {
             case props.encounter.match <= 25:
@@ -17,7 +21,7 @@ const Encounter = (props) => {
         }
     };
     return (
-        <TouchableOpacity onPress={() => {}}
+        <TouchableOpacity onPress={() => {props.setEncounterVisible(!props.encounterVisible)}}
             style={styles.photoContainer}
         >   
             <Image

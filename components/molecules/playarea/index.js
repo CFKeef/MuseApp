@@ -12,8 +12,8 @@ const PlayArea = (props) => {
             </View>
             
             <EncounterTray 
-                selected={props.selected} 
-                setSelected={props.setSelected}
+                setEncounterVisible={props.setEncounterVisible}
+                encounterVisible={props.encounterVisible}
             />
             <View style={styles.textContainer}>
                 <Text style={styles.text}>Currently Playing</Text>

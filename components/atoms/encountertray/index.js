@@ -28,7 +28,7 @@ const EncounterTray = (props) => {
                 style={{width: "100%", height: '100%'}}
                 horizontal={true}
                 data={encountered}
-                renderItem={({item}) => <Encounter encounter={item} selected={props.selected} />}
+                renderItem={({item}) => <Encounter encounter={item} setEncounterVisible={props.setEncounterVisible} encounterVisible={props.encounterVisible} />}
                 keyExtractor={(encounter) => String(encounter.id)}
                 initialScrollIndex={0}
                 removeClippedSubviews={false}

@@ -6,7 +6,9 @@ import HeaderNav from '../../components/molecules/headernav';
 import Events from '../../components/molecules/events';
 import LocalTray from '../../components/molecules/localtray';
 import PlayArea from '../../components/molecules/playarea';
+import EncounterPopUp from '../../components/atoms/encounterPopup';
 import { useNavigation } from '@react-navigation/native';
+import { setEncounterPopup } from '../../actions/popups';
 
 // redux pulls
 const getArtist = state => state.artist;
@@ -23,7 +25,8 @@ const Dashboard = () => {
     const storeEncounter = useSelector(getEncounter);
     const dispatch = useDispatch();
     const navigation = useNavigation();
-    
+    const [encounterVisible, setEncounterVisible] = useState(false);
+
     const handlePopUp = () => {
         switch(true) {
             // Event flag
@@ -35,6 +38,8 @@ const Dashboard = () => {
                 navigation.navigate("ArtistDetail");
                 break;
             // Encounter Flag
+            case storePopups.encounterFlag:
+                break
             // Song Flag
             // Marco Flag
             default:
@@ -42,15 +47,26 @@ const Dashboard = () => {
         };
     };
 
+    const handleEncounterPopUp = () => {
+        if(encounterVisible) return (
+            <EncounterPopUp setEncounterVisible={setEncounterVisible}/>
+        )
+    }
+
+
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: "#0B0518", height: "100%"}}>
             {handlePopUp()}
+            {handleEncounterPopUp()}
             <View style={styles.mainContainer}>
                 <HeaderNav />
                 <Events />
                 <LocalTray />
                 <View style={styles.footerContainer}>
-                    <PlayArea/>
+                    <PlayArea 
+                        setEncounterVisible={setEncounterVisible} 
+                        encounterVisible={encounterVisible}
+                    />
                 </View>
             </View>
         </SafeAreaView>
