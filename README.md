@@ -1,5 +1,7 @@
 # MuseApp
 
+![Banner](https://raw.githubusercontent.com/CFKeef/MuseApp/main/assets/images/Musebanner.png)
+
 ## Inspiration
 
 A love for music is something we all have in common. Our mission was to create a social network based on our love for music.
@@ -8,9 +10,26 @@ A love for music is something we all have in common. Our mission was to create a
 
 Muse's integrated UI shares with users what people nearby are listening to!
 
+### Spread "Mechanism" that is responsible for sharing your fine tastes
+![Graph](https://raw.githubusercontent.com/CFKeef/MuseApp/main/assets/images/spreadGraph.png)
+
 ## How we built it
 
 React makes it easy to keep with UI in sync with the application state. Redux in unison React makes it much easier to develop a complicated app without having to rely on context or complicated inheritance by passing props.
+
+## UI
+
+### Login Screen
+![Login](https://raw.githubusercontent.com/CFKeef/MuseApp/main/assets/images/Login.PNG)
+
+### Dashboard
+![Dashboard](https://raw.githubusercontent.com/CFKeef/MuseApp/main/assets/images/dash.PNG)
+
+### Dashboard with message shown
+![Dashboard with message shown](https://raw.githubusercontent.com/CFKeef/MuseApp/main/assets/images/dashNotif.PNG)
+
+### Event Page
+![Event Page](https://raw.githubusercontent.com/CFKeef/MuseApp/main/assets/images/ARtists.PNG)
 
 ## Challenges we ran into
 
